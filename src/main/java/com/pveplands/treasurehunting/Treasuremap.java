@@ -589,9 +589,11 @@ public class Treasuremap {
                 logger.log(Level.SEVERE, null, e);
             }
 
-            logger.log(Level.INFO, String.format("Checking if creature %s (id %d) at %d, %d aged %d (cared for by? %s) should drop a treasuremap.",
-                    killed.getName(), killed.getWurmId(), killed.getTileX(), killed.getTileY(), killed.getStatus().age,
-                    caretaker == null ? "Nobody" : caretaker.getName()));
+            if (options.getLogMapDrops()) {
+                logger.log(Level.INFO, String.format("Checking if creature %s (id %d) at %d, %d aged %d (cared for by? %s) should drop a treasuremap.",
+                        killed.getName(), killed.getWurmId(), killed.getTileX(), killed.getTileY(), killed.getStatus().age,
+                        caretaker == null ? "Nobody" : caretaker.getName()));
+            }
 
             // Should uniques drop a map?
             if (killed.isUnique()) {

@@ -25,6 +25,8 @@ public class TreasureOptions {
     private float lockMultiplier = 0.25f;
     
     private int creationTries = 1000;
+
+    private boolean logMapDrops = true;
     
     private int mapDiggingChance = 10000;
     private int mapMiningChance = 3500;
@@ -186,6 +188,9 @@ public class TreasureOptions {
         setMapUniqueChance(Integer.valueOf(p.getProperty("mapUniqueChance", String.valueOf(getMapUniqueChance()))));
         setMapUniqueChance(Math.min(2147483647, Math.max(0, getMapUniqueChance())));
         logger.log(Level.INFO, "Map unique chance: {0}", getMapUniqueChance());
+
+        setLogMapDrops(Boolean.valueOf(p.getProperty("logMapDrops", String.valueOf(getLogMapDrops()))));
+        logger.log(Level.INFO, "Log map drops: {0}", getLogMapDrops());
 
         setMapBaseDiff(Double.valueOf(p.getProperty("mapBaseDiff", String.valueOf(getMapBaseDiff()))));
         setMapBaseDiff(Math.min(100d, Math.max(4d, getMapBaseDiff())));
@@ -691,6 +696,14 @@ public class TreasureOptions {
 
     public void setMapForagingChance(int mapForagingChance) {
         this.mapForagingChance = mapForagingChance;
+    }
+
+    public boolean getLogMapDrops() {
+        return logMapDrops;
+    }
+
+    public void setLogMapDrops(boolean logMapDrops) {
+        this.logMapDrops = logMapDrops;
     }
 
     public int getMaxHeightDiff() {
