@@ -738,7 +738,7 @@ public class Treasuremap {
      * @return True if the distance is within bounds, otherwise false.
      */
     public static boolean IsAcceptableDistance(Creature from, int toX, int toY) {
-        int distanceFromPlayer = Math.abs(toX - from.getTileX()) + Math.abs(toY - from.getTileY());
+        int distanceFromPlayer = (int) Math.sqrt(Math.pow(Math.abs(toX - from.getTileX()), 2) + Math.pow(Math.abs(toY - from.getTileY()), 2));
 
         logger.info(String.format("%s distance to %d, %d is %d", from, toX, toY, distanceFromPlayer));
 
